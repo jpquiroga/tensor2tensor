@@ -1,0 +1,8 @@
+tensorflow
+tensorflow_probability
+mesh_tensorflow
+gym
+synpy
+pypng
+google-api-python-client
+oauth2client
