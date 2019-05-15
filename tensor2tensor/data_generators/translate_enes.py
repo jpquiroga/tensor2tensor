@@ -14,25 +14,30 @@ from tensor2tensor.utils import registry
 
 
 _ENES_TRAIN_DATASETS = [
+#     [
+# #        "https://drive.google.com/file/d/1J77RFV9qyEhF0hKzp2CRX2ybvVT5Au7u/view?usp=sharing",
+# #        "file:///home/wotan/ssd3/datasets/opensubtitles/translation/opensubtitles_translation_10M.tgz",
+#         "http://localhost:8000/opensubtitles/translation/opensubtitles_translation_60M.tgz",
+#         ("opensubtitles_translation_60M/en_60M.txt",
+#          "opensubtitles_translation_60M/es_60M.txt")
+#     ],
+#     [
+# #        "https://drive.google.com/file/d/1BG7ILl6VRCSP_vOciVIeB17b-bcYCndv/view?usp=sharing",
+#         "http://localhost:8000/opensubtitles/translation/opensubtitles_translation_10M.tgz",
+#         ("opensubtitles_translation_10M/en_10M.txt",
+#          "opensubtitles_translation_10M/es_10M.txt")
+#     ],
     [
-        "https://drive.google.com/file/d/1J77RFV9qyEhF0hKzp2CRX2ybvVT5Au7u/view?usp=sharing",
-        ("opensubtitles_translation_60M/en_60M.txt",
-         "opensubtitles_translation_60M/es_60M.txt")
-    ],
-    [
-        "https://drive.google.com/file/d/1BG7ILl6VRCSP_vOciVIeB17b-bcYCndv/view?usp=sharing",
-        ("opensubtitles_translation_10M/en_10M.txt",
-         "opensubtitles_translation_10M/es_10M.txt")
-    ],
-    [
-        "https://drive.google.com/file/d/1WI0NgJ9EWePtVz4ngqvJIn7q5-OiiE-y/view?usp=sharing",
+#        "https://drive.google.com/file/d/1WI0NgJ9EWePtVz4ngqvJIn7q5-OiiE-y/view?usp=sharing",
+        "http://localhost:8000/opensubtitles/translation/opensubtitles_translation_1M.tgz",
         ("opensubtitles_translation_1M/en_1M.txt",
          "opensubtitles_translation_1M/es_1M.txt")
     ],
 ]
 _ENES_EVAL_DATASETS = [
     [
-        "https://drive.google.com/file/d/1TSQZP6WTC05mLIQzo8FS5EwHCNtK1TYw/view?usp=sharing",
+#        "https://drive.google.com/file/d/1TSQZP6WTC05mLIQzo8FS5EwHCNtK1TYw/view?usp=sharing",
+        "http://localhost:8000/opensubtitles/translation/opensubtitles_translation_validation.tgz",
         ("opensubtitles_translation_validation/en_val_100K.txt",
          "opensubtitles_translation_validation/es_val_100K.txt")
     ],
@@ -41,27 +46,27 @@ _ENES_EVAL_DATASETS = [
 
 @registry.register_problem
 class TranslateEnesOpensubtitles32k(translate.TranslateProblem):
-  """En-es translation trained on opensubtitle corpus."""
+    """En-es translation trained on opensubtitle corpus."""
 
-  @property
-  def additional_training_datasets(self):
-    """Allow subclasses to add training datasets."""
-    return []
+    @property
+    def additional_training_datasets(self):
+        """Allow subclasses to add training datasets."""
+        return []
 
-  def source_data_files(self, dataset_split):
-    train = dataset_split == problem.DatasetSplit.TRAIN
-    train_datasets = _ENES_TRAIN_DATASETS + self.additional_training_datasets
-    return train_datasets if train else _ENES_EVAL_DATASETS
+    def source_data_files(self, dataset_split):
+        train = dataset_split == problem.DatasetSplit.TRAIN
+        train_datasets = _ENES_TRAIN_DATASETS + self.additional_training_datasets
+        return (train_datasets if train else _ENES_EVAL_DATASETS)
 
 
 @registry.register_problem
 class TranslateEnesOpensubtitlesClean32k(TranslateEnesOpensubtitles32k):
-  """En-de translation trained on WMT with further cleaning."""
+    """En-es translation trained on WMT with further cleaning."""
 
-  @property
-  def use_vocab_from_other_problem(self):
-    return TranslateEnesOpensubtitles32k()
+    @property
+    def use_vocab_from_other_problem(self):
+        return TranslateEnesOpensubtitles32k()
 
-  @property
-  def datatypes_to_clean(self):
-    return ["txt"]
+    @property
+    def datatypes_to_clean(self):
+        return ["txt"]
