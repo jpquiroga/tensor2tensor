@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+USR_DIR=$HOME/ssd3/github_projects/tensor2tensor/user_problems
+#USR_DIR=$HOME/ssd3/github_projects/tensor2tensor/tensor2tensor/data_generators
+PROBLEM=translate_enes
+DATA_DIR=$HOME/ssd3/t2t_data
+TMP_DIR=$HOME/ssd3/tmp/t2t_datagen
+mkdir -p $DATA_DIR $TMP_DIR
+
+t2t-datagen \
+  --t2t_usr_dir=$USR_DIR \
+  --data_dir=$DATA_DIR \
+  --tmp_dir=$TMP_DIR \
+  --problem=$PROBLEM
