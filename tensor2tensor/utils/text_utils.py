@@ -64,3 +64,26 @@ def filter_text_file_lines_by_num_tokens(orig_file, dest_file, max_tokens, tok_s
                 _toks = l.strip().split(tok_separator)
                 if len(_toks) <= max_tokens:
                     f_w.write(l)
+
+def filter_text_file_pair_lines_by_num_tokens(orig_file_1, orig_file_2, dest_file_1, dest_file_2, max_tokens, tok_separator=" "):
+    """
+    Remove all lines with a length greater than a a given value from a file 1 and write the same corresponding
+    lines of file 2 to a pair of respective destination files.
+
+    :param orig_file_1: Origin file.
+    :param orig_file_2: Origin file. With the same number of lines than orig_file_1.
+    :param dest_file_1: Destination file.
+    :param dest_file_2: Destination file.
+    :param max_tokens: Maximum number of tokens.
+    :param tok_separator: Separator used for tokenization.
+    """
+    with open(orig_file_1, "r") as f_r_1:
+        with open(orig_file_2, "r") as f_r_2:
+            with open(dest_file_1, "w") as f_w_1:
+                with open(dest_file_2, "w") as f_w_2:
+                    for l_1 in f_r_1:
+                        _toks = l_1.strip().split(tok_separator)
+                        l_2 = f_r_2.readline()
+                        if len(_toks) <= max_tokens:
+                            f_w_1.write(l_1)
+                            f_w_2.write(l_2)
