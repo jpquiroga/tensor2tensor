@@ -230,6 +230,7 @@ def generate_data_for_problem(problem):
   train_output_files = generator_utils.train_data_filenames(
       problem + generator_utils.UNSHUFFLED_SUFFIX, FLAGS.data_dir,
       num_train_shards)
+  tf.logging.info("Generating max_cases: {}".format(FLAGS.max_cases))
   generator_utils.generate_files(training_gen(), train_output_files,
                                  FLAGS.max_cases)
   num_dev_shards = int(num_train_shards * 0.1)
