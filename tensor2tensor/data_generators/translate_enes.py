@@ -14,25 +14,25 @@ from tensor2tensor.utils import registry
 
 
 _ENES_TRAIN_DATASETS = [
-#     [
-# #        "https://drive.google.com/file/d/1J77RFV9qyEhF0hKzp2CRX2ybvVT5Au7u/view?usp=sharing",
-# #        "file:///home/wotan/ssd3/datasets/opensubtitles/translation/opensubtitles_translation_10M.tgz",
-#         "http://localhost:8000/opensubtitles/translation/opensubtitles_translation_60M.tgz",
-#         ("opensubtitles_translation_60M/en_60M.txt",
-#          "opensubtitles_translation_60M/es_60M.txt")
-#     ],
+    [
+#        "https://drive.google.com/file/d/1J77RFV9qyEhF0hKzp2CRX2ybvVT5Au7u/view?usp=sharing",
+#        "file:///home/wotan/ssd3/datasets/opensubtitles/translation/opensubtitles_translation_10M.tgz",
+        "http://localhost:8000/opensubtitles/translation/opensubtitles_translation_60M.tgz",
+        ("opensubtitles_translation_60M/en_60M.txt",
+         "opensubtitles_translation_60M/es_60M.txt")
+    ],
 #     [
 # #        "https://drive.google.com/file/d/1BG7ILl6VRCSP_vOciVIeB17b-bcYCndv/view?usp=sharing",
 #         "http://localhost:8000/opensubtitles/translation/opensubtitles_translation_10M.tgz",
 #         ("opensubtitles_translation_10M/en_10M.txt",
 #          "opensubtitles_translation_10M/es_10M.txt")
 #     ],
-    [
-#        "https://drive.google.com/file/d/1WI0NgJ9EWePtVz4ngqvJIn7q5-OiiE-y/view?usp=sharing",
-        "http://localhost:8000/opensubtitles/translation/opensubtitles_translation_1M.tgz",
-        ("opensubtitles_translation_1M/en_1M.txt",
-         "opensubtitles_translation_1M/es_1M.txt")
-    ],
+#    [
+##        "https://drive.google.com/file/d/1WI0NgJ9EWePtVz4ngqvJIn7q5-OiiE-y/view?usp=sharing",
+#        "http://localhost:8000/opensubtitles/translation/opensubtitles_translation_1M.tgz",
+#        ("opensubtitles_translation_1M/en_1M.txt",
+#         "opensubtitles_translation_1M/es_1M.txt")
+#    ],
 ]
 _ENES_EVAL_DATASETS = [
     [
